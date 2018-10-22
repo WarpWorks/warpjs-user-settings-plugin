@@ -1,0 +1,9 @@
+languages:
+  - javascript
+files:
+  - "lib/**/*.js"
+  - "server/**/*.js"
+  - "client/**/*.js"
+  - "client/**/*.jsx"
+reporter: json
+
