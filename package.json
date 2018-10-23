@@ -7,7 +7,8 @@
     "node": ">=8.12.0"
   },
   "scripts": {
-    "prepare": "grunt"
+    "prepare": "grunt",
+    "pack:dev": "DEBUG=W2:* NODE_ENV=development npm pack"
   },
   "repository": {
     "type": "git",
@@ -58,18 +59,22 @@
     "handlebars": "^4.0.12",
     "hbs": "^4.0.1",
     "hbs-utils": "0.0.4",
+    "immutable": "^3.8.2",
     "load-grunt-config": "^0.19.2",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",
+    "redux-concatenate-reducers": "^1.0.0",
+    "redux-logger": "^3.0.6",
     "time-grunt": "^1.4.0",
     "webpack": "^3.12.0",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "dependencies": {
     "@warp-works/warpjs-action-plugin": "^1.2.0",
+    "debug": "^4.1.0",
     "lodash": "^4.17.11"
   }
 }

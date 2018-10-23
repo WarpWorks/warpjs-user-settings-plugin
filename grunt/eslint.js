@@ -28,17 +28,25 @@ module.exports = (grunt, options) => Object.freeze({
                 root: true,
                 extends: [
                     '@quoin/eslint-config-quoin/client',
-                    'eslint:recommended',
                     'plugin:react/recommended'
                 ]
             },
+            globals: [
+                'process',
+                'require'
+            ],
             envs: [
                 'jquery'
-            ]
+            ],
+            rules: {
+                'react/react-in-jsx-scope': 'off'
+            }
         },
         src: [
             'client/**/*.js',
-            '!client/**/*.test.js'
+            'client/**/*.jsx',
+            '!client/**/*.test.js',
+            '!client/**/*.test.jsx'
         ]
     },
     'node-test': {
