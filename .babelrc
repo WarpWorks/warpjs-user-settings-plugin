@@ -1,0 +1,17 @@
+
+{
+  "compact": false,
+  "presets": [
+    "env",
+    "react",
+  ],
+  "plugins": [
+    [
+      "transform-async-to-generator",
+      {
+        "module": "bluebird",
+        "method": "coroutine"
+      }
+    ]
+  ]
+}
