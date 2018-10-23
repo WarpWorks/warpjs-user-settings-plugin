@@ -17,9 +17,13 @@ module.exports = async (req, res) => {
             `${req.app.get('base-url')}/assets/${constants.assets.css}`
         ),
 
-        [warpjsUtils.constants.HAL_CONTENT_TYPE]: () => {
+        [warpjsUtils.constants.HAL_CONTENT_TYPE]: async () => {
     // eslint-disable-next-line no-console
             console.log("get with HAL_CONTENT_TYPE");
+            const resource = warpjsUtils.createResource(req, {
+            });
+
+            warpjsUtils.sendHal(req, res, resource, RoutesInfo);
         }
 
     });

@@ -25,6 +25,10 @@ module.exports = (grunt, options) => Object.freeze({
             filename: '[name].min.js'
         },
         plugins: [
+            new webpack.DefinePlugin({
+                'process.env.NODE_ENV': JSON.stringify('production')
+            }),
+
             new WebpackVisualizer({
                 filename: '../reports/webpack-visualizer.html'
             }),
