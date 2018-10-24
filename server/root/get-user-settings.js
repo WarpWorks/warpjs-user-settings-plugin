@@ -1,11 +1,11 @@
+const debug = require('debug')('W2:plugin:user-settings:server/root/get-user-settings');
 const RoutesInfo = require('@quoin/expressjs-routes-info');
 const warpjsUtils = require('@warp-works/warpjs-utils');
 
 const constants = require('./../../lib/constants');
 
 module.exports = async (req, res) => {
-    // eslint-disable-next-line no-console
-    console.log("req.warpjsUser=", req.warpjsUser);
+    debug("req.warpjsUser=", req.warpjsUser);
 
     warpjsUtils.wrapWith406(res, {
         html: () => warpjsUtils.sendPortalIndex(
@@ -18,8 +18,7 @@ module.exports = async (req, res) => {
         ),
 
         [warpjsUtils.constants.HAL_CONTENT_TYPE]: async () => {
-    // eslint-disable-next-line no-console
-            console.log("get with HAL_CONTENT_TYPE");
+            debug("get with HAL_CONTENT_TYPE");
             const resource = warpjsUtils.createResource(req, {
             });
 

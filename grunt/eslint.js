@@ -33,7 +33,8 @@ module.exports = (grunt, options) => Object.freeze({
             },
             globals: [
                 'process',
-                'require'
+                'require',
+                'React'
             ],
             envs: [
                 'jquery'

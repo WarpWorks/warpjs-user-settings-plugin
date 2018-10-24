@@ -6,16 +6,26 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './app';
+import * as actionCreators from './sidebar/action-creators';
 import store from './store';
 
 const log = debug('W2:plugin:user-settings:client/index');
 
 (($) => $(document).ready(async () => {
-    log("process.env.NODE_ENV=", process.env.NODE_ENV);
     ReactDOM.render(
         <Provider store={store}>
             <App />
         </Provider>,
         $(window.WarpJS.CONTENT_PLACEHOLDER).get(0)
     );
+
+    const result = await window.WarpJS.getCurrentPageHAL($);
+    const state = window.WarpJS.flattenHAL(result.data);
+
+    log("state=", state);
+    if (state.warpjsUser) {
+        store.dispatch(actionCreators.updateSelectedKey('profile'));
+    } else {
+        store.dispatch(actionCreators.notLogged());
+    }
 }))(jQuery);
