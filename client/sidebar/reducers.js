@@ -3,7 +3,7 @@ import debug from 'debug';
 import extend from 'lodash/extend';
 import reduxConcatenateReducers from 'redux-concatenate-reducers';
 
-import * as actions from './actions';
+import actions from './actions';
 import * as reactUtils from './../react-utils';
 
 const log = debug('W2:plugin:user-settings:client/sidebar/reducers');

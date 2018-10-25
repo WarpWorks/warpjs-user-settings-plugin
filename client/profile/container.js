@@ -4,17 +4,12 @@ import { connect } from 'react-redux';
 import Component from './component';
 import errorBoundary from './../react-utils/error-boundary';
 
-const mapStateToProps = (state, ownProps) => {
-    return Object.freeze(pick(state, ['initialized', 'selectedSection', 'user']));
-};
+const mapStateToProps = (state) => pick(state, ['user']);
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return Object.freeze({
-    });
+const mapDispatchToProps = (dispatch) => {
 };
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
-Container.displayName = 'MainBodyContainer';
+Container.displayName = 'ProfileContainer';
 
 export default errorBoundary(Container);

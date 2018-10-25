@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
 
+import * as actionCreators from './action-creators';
 import Component from './component';
 import errorBoundary from './../react-utils/error-boundary';
 
-function mapStateToProps(state) {
-    // eslint-disable-next-line no-console
-    console.log("container.mapStateToProps: state=", state);
-    return Object.freeze({
-        initialized: state.initialized
-    });
-}
+const mapStateToProps = (state) => Object.freeze({
+    initialized: state.initialized,
+    loggedIn: state.loggedIn
+});
 
-const Container = connect(mapStateToProps)(Component);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectSection: (key) => dispatch(actionCreators.selectSection(key))
+    };
+};
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 Container.displayName = 'AppContainer';
 

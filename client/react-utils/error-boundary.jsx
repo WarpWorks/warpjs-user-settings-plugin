@@ -31,5 +31,8 @@ export default (Component) => {
         }
     };
 
+    ErrorBoundary.displayName = `${Component.displayName}ErrorBoundary`;
+    ErrorBoundary.propTypes = Component.propTypes;
+
     return ErrorBoundary;
 };

@@ -7,25 +7,28 @@ import { Provider } from 'react-redux';
 
 import App from './app';
 import * as appActionCreators from './app/action-creators';
+import constants from './constants';
 import store from './store';
 
 const log = debug('W2:plugin:user-settings:client/index');
 
 (($) => $(document).ready(async () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App />
-        </Provider>,
-        $(window.WarpJS.CONTENT_PLACEHOLDER).get(0)
-    );
-
     const result = await window.WarpJS.getCurrentPageHAL($);
-    const state = window.WarpJS.flattenHAL(result.data);
+    const data = window.WarpJS.flattenHAL(result.data);
 
-    log("state=", state);
-    if (state.warpjsUser) {
-        store.dispatch(appActionCreators.updateSelectedKey('profile'));
-    } else {
-        store.dispatch(appActionCreators.notLogged());
+    if (data.warpjsUser) {
+        store.dispatch(appActionCreators.loggedIn());
+
+        if (data.users && data.users.length) {
+            store.dispatch(appActionCreators.setUser(data.users[0]));
+            store.dispatch(appActionCreators.selectSection(constants.sections.profile));
+        }
+
+        ReactDOM.render(
+            <Provider store={store}>
+                <App />
+            </Provider>,
+            $(window.WarpJS.CONTENT_PLACEHOLDER).get(0)
+        );
     }
 }))(jQuery);

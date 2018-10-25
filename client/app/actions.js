@@ -6,6 +6,8 @@ const NAMESPACE = 'APP';
 
 export default Object.freeze(
     [
-        'NOT_LOGGED'
+        'LOGGED_STATE',
+        'SELECT_SECTION',
+        'SET_USER'
     ].reduce((map, key) => extend(map, { [key]: namespace(`${NAMESPACE}.${key}`) }), {})
 );

@@ -1,7 +1,6 @@
 // import debug from 'debug';
 import { connect } from 'react-redux';
 
-import * as actionCreators from './action-creators';
 import Component from './component';
 import errorBoundary from './../react-utils/error-boundary';
 
@@ -11,19 +10,11 @@ const mapStateToProps = (state, ownProps) => {
     // log(`mapStateToProps(): state=`, state);
     // log(`mapStateToProps(): ownProps=`, ownProps);
     return Object.freeze({
-        selectedItem: state.selectedItem,
-        sidebarItems: state.sidebarItems
+        selectedSection: state.selectedSection
     });
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    // log(`mapDispatchToProps(): ownProps=`, ownProps);
-    return Object.freeze({
-        updateSelectedKey: actionCreators.updateSelectedKey
-    });
-};
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 Container.displayName = 'SidebarContainer';
 

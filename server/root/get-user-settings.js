@@ -18,9 +18,36 @@ module.exports = async (req, res) => {
         ),
 
         [warpjsUtils.constants.HAL_CONTENT_TYPE]: async () => {
-            debug("get with HAL_CONTENT_TYPE");
             const resource = warpjsUtils.createResource(req, {
             });
+
+            if (req.warpjsUser) {
+                const config = req.app.get(constants.appKeys.pluginConfig);
+                debug("config=", config);
+                const warpCore = req.app.get(constants.appKeys.warpCore);
+                const Persistence = require(config.persistence.module);
+                const persistence = new Persistence(config.persistence.host, config.persistence.name);
+
+                try {
+                    const domain = await warpCore.getDomainByName(config.domainName);
+                    const entity = domain.getEntityByInstance({type: req.warpjsUser.type});
+                    const instance = await entity.getInstance(persistence, req.warpjsUser.id);
+                    debug("instance=", instance);
+
+                    const userResource = warpjsUtils.createResource('', {
+                        type: entity.name,
+                        typeID: entity.id,
+                        id: instance.id,
+                        name: instance.Name
+                    });
+
+                    resource.embed('users', userResource);
+
+
+                } finally {
+                    persistence.close();
+                }
+            }
 
             warpjsUtils.sendHal(req, res, resource, RoutesInfo);
         }

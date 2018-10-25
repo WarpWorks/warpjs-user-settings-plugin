@@ -1,9 +1,23 @@
-// import debug from 'debug';
-
 import actions from './actions';
+// import debug from './../debug';
 
-// const log = debug('W2:plugin:user-settings:client/sidebar/action-creators');
+// const log = debug('client/sidebar/action-creators');
 
-export const notLogged = () => Object.freeze({
-    type: actions.NOT_LOGGED
+export const loggedIn = () => Object.freeze({
+    type: actions.LOGGED_STATE,
+    payload: {
+        loggedIn: true
+    }
+});
+
+export const setUser = (warpjsUser) => Object.freeze({
+    type: actions.SET_USER,
+    payload: warpjsUser
+});
+
+export const selectSection = (key) => Object.freeze({
+    type: actions.SELECT_SECTION,
+    payload: {
+        key
+    }
 });
