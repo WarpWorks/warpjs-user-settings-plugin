@@ -1,3 +1,5 @@
 import packageJson from './../package.json';
 
-export default packageJson.name.replace(/@/g, '').replace(/\//g, '_').toUpperCase();
+const NAMESPACE = packageJson.name;
+
+export default (actionType) => `${NAMESPACE}.${actionType}`.replace(/@/g, '').replace(/[/_]/g, '-').toUpperCase();

@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './app';
-import * as actionCreators from './sidebar/action-creators';
+import * as appActionCreators from './app/action-creators';
 import store from './store';
 
 const log = debug('W2:plugin:user-settings:client/index');
@@ -24,8 +24,8 @@ const log = debug('W2:plugin:user-settings:client/index');
 
     log("state=", state);
     if (state.warpjsUser) {
-        store.dispatch(actionCreators.updateSelectedKey('profile'));
+        store.dispatch(appActionCreators.updateSelectedKey('profile'));
     } else {
-        store.dispatch(actionCreators.notLogged());
+        store.dispatch(appActionCreators.notLogged());
     }
 }))(jQuery);
