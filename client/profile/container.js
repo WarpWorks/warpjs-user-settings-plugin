@@ -1,15 +1,16 @@
-import pick from 'lodash/pick';
-import { connect } from 'react-redux';
-
 import Component from './component';
-import errorBoundary from './../react-utils/error-boundary';
+import constants from './../../lib/constants';
+import wrapContainer from './../react-utils/wrap-container';
 
-const mapStateToProps = (state) => pick(state, ['user']);
+// import debug from './../debug';
+// const log = debug('client/profile/container');
 
-const mapDispatchToProps = (dispatch) => {
-};
+const mapStateToProps = (state) => Object.freeze({
+    loggedIn: state.loggedIn,
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-Container.displayName = 'ProfileContainer';
+    name: Object.freeze(state.user.fields.find((field) => field.field === constants.fields.Name))
+});
 
-export default errorBoundary(Container);
+const mapDispatchToProps = (dispatch, ownProps) => Object.freeze({});
+
+export default wrapContainer(Component, mapStateToProps, mapDispatchToProps);

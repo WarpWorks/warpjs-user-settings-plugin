@@ -40,7 +40,8 @@ const MainBody = (props) => {
 
 MainBody.propTypes = {
     initialized: PropTypes.bool.isRequired,
-    loggedIn: PropTypes.bool.isRequired
+    loggedIn: PropTypes.bool.isRequired,
+    selectedSection: PropTypes.string.isRequired
 };
 
 MainBody.displayName = 'MainBody';

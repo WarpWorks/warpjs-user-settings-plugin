@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import regeneratorRuntime from 'babel-regenerator-runtime';
-import debug from 'debug';
+// import debug from 'debug';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,7 +10,7 @@ import * as appActionCreators from './app/action-creators';
 import constants from './constants';
 import store from './store';
 
-const log = debug('W2:plugin:user-settings:client/index');
+// const log = debug('W2:plugin:user-settings:client/index');
 
 (($) => $(document).ready(async () => {
     const result = await window.WarpJS.getCurrentPageHAL($);

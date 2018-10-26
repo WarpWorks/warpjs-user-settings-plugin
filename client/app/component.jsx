@@ -23,7 +23,7 @@ const App = (props) => {
                             <Grid fluid>
                                 <Row>
                                     <Col xs={12}>
-                                        <MainBody loggedIn={props.loggedIn} initialized={props.initialized} />
+                                        <MainBody />
                                     </Col>
                                 </Row>
                             </Grid>

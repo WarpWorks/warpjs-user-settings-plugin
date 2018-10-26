@@ -1,11 +1,11 @@
-import debug from 'debug';
 import PropTypes from 'prop-types';
 import { Button, Col, Row } from 'react-bootstrap';
 
+// import debug from './../debug';
 import constants from './../constants';
 import errorBoundary from './../react-utils/error-boundary';
 
-const log = debug('W2:plugin:user-settings:client/sidebar/component');
+// const log = debug('client/sidebar/component');
 
 const SIDEBAR_ITEMS = [
     { key: constants.sections.profile, label: 'Profile' },
@@ -15,7 +15,7 @@ const SIDEBAR_ITEMS = [
 ];
 
 const Sidebar = (props) => {
-    log("Sidebar: props=", props);
+    // log("Sidebar: props=", props);
 
     const buttons = SIDEBAR_ITEMS.map((sidebarItem) => {
         const selectedClassName = (sidebarItem.key === props.selectedSection) ? 'warpjs-user-settings-sidebar-item-selected' : '';

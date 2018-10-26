@@ -12,6 +12,7 @@
         "module": "bluebird",
         "method": "coroutine"
       }
-    ]
+    ],
+    "transform-object-rest-spread"
   ]
 }

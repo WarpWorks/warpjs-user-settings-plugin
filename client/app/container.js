@@ -1,22 +1,15 @@
-import { connect } from 'react-redux';
+import pick from 'lodash/pick';
 
 import * as actionCreators from './action-creators';
 import Component from './component';
-import errorBoundary from './../react-utils/error-boundary';
+import wrapContainer from './../react-utils/wrap-container';
 
-const mapStateToProps = (state) => Object.freeze({
-    initialized: state.initialized,
-    loggedIn: state.loggedIn
-});
+const mapStateToProps = (state, ownProps) => Object.freeze(pick(state, ['initialized', 'loggedIn']));
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         selectSection: (key) => dispatch(actionCreators.selectSection(key))
     };
 };
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
-Container.displayName = 'AppContainer';
-
-export default errorBoundary(Container);
+export default wrapContainer(Component, mapStateToProps, mapDispatchToProps);

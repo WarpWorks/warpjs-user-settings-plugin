@@ -1,8 +1,7 @@
 // import debug from 'debug';
-import { connect } from 'react-redux';
 
 import Component from './component';
-import errorBoundary from './../react-utils/error-boundary';
+import wrapContainer from './../react-utils/wrap-container';
 
 // const log = debug('W2:plugin:user-settings:client/sidebar/container');
 
@@ -14,8 +13,6 @@ const mapStateToProps = (state, ownProps) => {
     });
 };
 
-const Container = connect(mapStateToProps)(Component);
+const mapDispatchToProps = (dispatch, ownProps) => ({});
 
-Container.displayName = 'SidebarContainer';
-
-export default errorBoundary(Container);
+export default wrapContainer(Component, mapStateToProps, mapDispatchToProps);

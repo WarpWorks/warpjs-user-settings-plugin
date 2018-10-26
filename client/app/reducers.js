@@ -3,6 +3,7 @@ import extend from 'lodash/extend';
 import reduxConcatenateReducers from 'redux-concatenate-reducers';
 
 import actions from './actions';
+import autoSaveFieldReducers from './../auto-save-field/reducers';
 import * as reactUtils from './../react-utils';
 // import debug from './../debug';
 
@@ -32,5 +33,6 @@ export default reduxConcatenateReducers([
     reactUtils.guardAction([actions.LOGGED_STATE], updateLoggedState),
     reactUtils.guardAction([actions.SET_USER], setUser),
     reactUtils.guardAction([actions.SET_USER], updateInitilized),
-    reactUtils.guardAction([actions.SELECT_SECTION], selectSection)
+    reactUtils.guardAction([actions.SELECT_SECTION], selectSection),
+    autoSaveFieldReducers
 ]);

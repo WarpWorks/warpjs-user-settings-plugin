@@ -1,33 +1,32 @@
 import PropTypes from 'prop-types';
-import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
 
+import AutoSaveField from './../auto-save-field';
 import errorBoundary from './../react-utils/error-boundary';
 
-const Profile = (props) => {
+const Component = (props) => {
     return (
         <div>
             <h1>Profile</h1>
 
             <form>
-                <FormGroup controlId="formName">
-                    <ControlLabel>Name</ControlLabel>
-                    <FormControl
-                        type="text"
-                        value={props.user.name}
-                        placeholder="Enter name"
-                    />
-                </FormGroup>
+                <AutoSaveField
+                    label="Name"
+                    field={props.name}
+                    placeholder="Enter name"
+                />
             </form>
         </div>
     );
 };
 
-Profile.displayName = 'Profile';
+Component.displayName = 'Profile';
 
-Profile.propTypes = {
-    user: PropTypes.shape({
-        name: PropTypes.string
+Component.propTypes = {
+    name: PropTypes.shape({
+        field: PropTypes.string,
+        value: PropTypes.string,
+        dirty: PropTypes.bool
     })
 };
 
-export default errorBoundary(Profile);
+export default errorBoundary(Component);
