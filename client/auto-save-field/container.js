@@ -5,7 +5,8 @@ import wrapContainer from './../react-utils/wrap-container';
 const mapStateToProps = (state, ownProps) => {
     const field = state.user.fields.find((field) => field.field === ownProps.field.field);
     return Object.freeze({
-        status: field.saved ? 'saved' : field.saving ? 'saving' : field.dirty ? 'dirty' : 'clean'
+        status: field.saved ? 'saved' : field.saving ? 'saving' : field.dirty ? 'dirty' : 'clean',
+        validationState: field.saved ? 'success' : field.saving ? 'warning' : field.dirty ? 'warning' : null
     });
 };
 

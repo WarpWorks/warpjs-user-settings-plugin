@@ -10,3 +10,8 @@ export const updateSelectedKey = (key) => Object.freeze({
         key
     }
 });
+
+export const selectSection = (key) => Object.freeze({
+    type: actions.SELECT_SECTION,
+    payload: { key }
+});

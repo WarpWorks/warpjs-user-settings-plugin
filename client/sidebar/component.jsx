@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Row } from 'react-bootstrap';
 
 // import debug from './../debug';
 import constants from './../constants';
@@ -29,14 +29,16 @@ const Sidebar = (props) => {
     });
 
     return (
-        <Row className="warpjs-user-settings-content">
-            <Col xs={12} className="warpjs-title">
-                Personal Settings
-            </Col>
-            <Col xs={12} className="warpjs-user-settings-sidebar-items">
-                {buttons}
-            </Col>
-        </Row>
+        <Grid fluid className="warpjs-user-settings-sidebar">
+            <Row className="warpjs-user-settings-content">
+                <Col xs={12} className="warpjs-title">
+                    Personal Settings
+                </Col>
+                <Col xs={12} className="warpjs-user-settings-sidebar-items">
+                    {buttons}
+                </Col>
+            </Row>
+        </Grid>
     );
 };
 

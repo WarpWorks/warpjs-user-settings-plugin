@@ -1,45 +1,38 @@
 .warpjs-user-settings-auto-save-field {
-    .input-group {
-        .input-group-addon {
-            background-color: transparent;
-            border: none;
+    &.has-feedback {
+        .form-control {
+            // border-color: inherit;
+
+            &:focus {
+                background-color: #f5f5f5;
+            }
+        }
+
+        .form-control-feedback {
         }
 
         &.warpjs-field-status-clean {
             .form-control {
-                border: none;
-
-                &:focus {
-                    border: inherit;
-                    background-color: #f5f5f5;
-                }
+                // border-color: transparent;
             }
-            .input-group-addon {
+
+            .form-control-feedback {
                 color: transparent;
             }
         }
 
         &.warpjs-field-status-dirty {
-            .form-control {
-                &:focus {
-                    background-color: #f5f5f5;
-                }
-            }
-
-            .input-group-addon {
-                color: #cccccc;
-            }
         }
 
         &.warpjs-field-status-saving {
-            .input-group-addon {
-                color: #aa6708;
+            .form-control {
+                pointer-events: none;
             }
         }
 
         &.warpjs-field-status-saved {
-            .input-group-addon {
-                color: #3c763d;
+            .form-control {
+                pointer-events: none;
             }
         }
     }

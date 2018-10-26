@@ -4,6 +4,7 @@ import reduxConcatenateReducers from 'redux-concatenate-reducers';
 
 import actions from './actions';
 import autoSaveFieldReducers from './../auto-save-field/reducers';
+import sidebarReducers from './../sidebar/reducers';
 import * as reactUtils from './../react-utils';
 // import debug from './../debug';
 
@@ -24,15 +25,10 @@ const setUser = (state = {}, action) => extend(cloneDeep(state), {
 });
 setUser.displayName = 'setUser';
 
-const selectSection = (state = {}, action) => extend(cloneDeep(state), {
-    selectedSection: action.payload.key
-});
-selectSection.displayName = 'selectSection';
-
 export default reduxConcatenateReducers([
     reactUtils.guardAction([actions.LOGGED_STATE], updateLoggedState),
     reactUtils.guardAction([actions.SET_USER], setUser),
     reactUtils.guardAction([actions.SET_USER], updateInitilized),
-    reactUtils.guardAction([actions.SELECT_SECTION], selectSection),
-    autoSaveFieldReducers
+    autoSaveFieldReducers,
+    sidebarReducers
 ]);

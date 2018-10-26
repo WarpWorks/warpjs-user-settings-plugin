@@ -11,22 +11,16 @@ import Sidebar from './../sidebar';
 
 const App = (props) => {
     return (
-        <Grid>
+        <Grid fluid className="warpjs-user-settings-plugin">
             <Row>
                 <LeftRightMargin />
-                <Col xs={12} sm={10} className="warpjs-user-settings-plugin">
+                <Col xs={12} sm={10}>
                     <Row>
-                        <Col xs={12} sm={4} className="warpjs-user-settings-sidebar">
-                            <Sidebar loggedIn={props.loggedIn} initialized={props.initialized} selectSection={props.selectSection} />
+                        <Col xs={12} sm={4}>
+                            <Sidebar loggedIn={props.loggedIn} initialized={props.initialized} />
                         </Col>
-                        <Col xs={12} sm={8} className="warpjs-user-settings-main-body">
-                            <Grid fluid>
-                                <Row>
-                                    <Col xs={12}>
-                                        <MainBody />
-                                    </Col>
-                                </Row>
-                            </Grid>
+                        <Col xs={12} sm={8}>
+                            <MainBody />
                         </Col>
                     </Row>
                 </Col>
@@ -40,8 +34,7 @@ App.displayName = 'App';
 
 App.propTypes = {
     initialized: PropTypes.bool.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    selectSection: PropTypes.func.isRequired
+    loggedIn: PropTypes.bool.isRequired
 };
 
 export default errorBoundary(App);

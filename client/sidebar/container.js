@@ -1,18 +1,27 @@
-// import debug from 'debug';
+import pick from 'lodash/pick';
 
+import * as actionCreators from './action-creators';
 import Component from './component';
 import wrapContainer from './../react-utils/wrap-container';
 
-// const log = debug('W2:plugin:user-settings:client/sidebar/container');
+// import debug from './../debug';
+// const log = debug('client/sidebar/container');
 
-const mapStateToProps = (state, ownProps) => {
-    // log(`mapStateToProps(): state=`, state);
-    // log(`mapStateToProps(): ownProps=`, ownProps);
-    return Object.freeze({
-        selectedSection: state.selectedSection
-    });
-};
+const mapStateToProps = (state, ownProps) => Object.freeze(pick(state, ['selectedSection']));
 
-const mapDispatchToProps = (dispatch, ownProps) => ({});
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    selectSection: (selectedSection) => (key) => {
+        if (selectedSection !== key) {
+            dispatch(actionCreators.selectSection(key));
+        }
+    }
+});
 
-export default wrapContainer(Component, mapStateToProps, mapDispatchToProps);
+const mergeProps = (stateProps, dispatchProps, ownProps) => Object.freeze({
+    ...stateProps,
+    ...dispatchProps,
+    selectSection: dispatchProps.selectSection(stateProps.selectedSection),
+    ...ownProps
+});
+
+export default wrapContainer(Component, mapStateToProps, mapDispatchToProps, mergeProps);

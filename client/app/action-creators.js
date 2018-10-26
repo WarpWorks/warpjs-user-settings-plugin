@@ -14,8 +14,3 @@ export const setUser = (warpjsUser) => Object.freeze({
     type: actions.SET_USER,
     payload: warpjsUser
 });
-
-export const selectSection = (key) => Object.freeze({
-    type: actions.SELECT_SECTION,
-    payload: { key }
-});

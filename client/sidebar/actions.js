@@ -4,6 +4,6 @@ import namespace from './../namespace';
 
 export default Object.freeze(
     [
-        'UPDATE_SELECTED_KEY'
+        'SELECT_SECTION'
     ].reduce((map, key) => extend(map, { [key]: namespace(`SIDEBAR.${key}`) }), {})
 );
