@@ -10,6 +10,7 @@ import * as appActionCreators from './app/action-creators';
 import constants from './constants';
 import * as sidebarActionCreators from './sidebar/action-creators';
 import store from './store';
+import { initReactBootstrapDisplayNames } from './react-utils';
 
 // const log = debug('W2:plugin:user-settings:client/index');
 
@@ -25,6 +26,9 @@ import store from './store';
             store.dispatch(sidebarActionCreators.selectSection(constants.sections.profile));
         }
     }
+
+    initReactBootstrapDisplayNames();
+
     ReactDOM.render(
         <Provider store={store}>
             <App />

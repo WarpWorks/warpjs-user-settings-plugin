@@ -4,7 +4,11 @@ import actions from './actions';
 import * as reactUtils from './../react-utils';
 import * as utils from './../utils';
 
+import debug from './../debug';
+const log = debug('client/auto-save-field/reducers');
+
 const updateField = (state = {}, action) => {
+    log(`updateField(): action=`, action);
     const { clone, field } = utils.findField(state, action);
     if (field) {
         field.value = action.payload.value;

@@ -41,13 +41,13 @@ module.exports = (grunt, options) => Object.freeze({
                 names: 'vendor',
                 filename: `${constants.versionedName}-[name].min.js`,
                 minChunks: (module) => module.context && module.context.indexOf('node_modules') !== -1
-            }),
+            // }),
 
-            new webpack.optimize.UglifyJsPlugin({
-                compress: false,
-                output: {
-                    ascii_only: true
-                }
+            // new webpack.optimize.UglifyJsPlugin({
+            //     compress: false,
+            //     output: {
+            //         ascii_only: true
+            //     }
             })
         ],
         module: {

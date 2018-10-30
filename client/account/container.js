@@ -1,14 +1,22 @@
 import Component from './component';
-import wrapContainer from './../react-utils/wrap-container';
+import constants from './../../lib/constants';
+import * as utils from './../utils';
+import { wrapContainer } from './../react-utils';
 
-const mapStateToProps = (state, ownProps) => {
-    return Object.freeze({
-    });
-};
+import debug from './../debug';
+const log = debug('client/account/container');
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return Object.freeze({
-    });
-};
+const mapStateToProps = (state, ownProps) => Object.freeze({
+    email: utils.getField(state, constants.fields.Email)
+});
 
-export default wrapContainer(Component, mapStateToProps, mapDispatchToProps);
+// const mapDispatchToProps = (dispatch, ownProps) => Object.freeze({
+// });
+
+// const mergeProps = (stateProps, dispatchProps, ownProps) => Object.freeze({
+//     ...stateProps,
+//     ...dispatchProps,
+//     ...ownProps
+// });
+
+export default wrapContainer(Component, mapStateToProps, mapDispatchToProps, mergeProps);

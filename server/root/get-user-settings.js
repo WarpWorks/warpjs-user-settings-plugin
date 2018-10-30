@@ -1,11 +1,12 @@
-// const debug = require('debug')('W2:plugin:user-settings:server/root/get-user-settings');
+const debug = require('debug')('W2:plugin:user-settings:server/root/get-user-settings');
 const RoutesInfo = require('@quoin/expressjs-routes-info');
 const warpjsUtils = require('@warp-works/warpjs-utils');
 
+const basicProperty = require('./resources/basic-property');
 const constants = require('./../../lib/constants');
 
 module.exports = async (req, res) => {
-    // debug("req.warpjsUser=", req.warpjsUser);
+    debug("req.warpjsUser=", req.warpjsUser);
 
     warpjsUtils.wrapWith406(res, {
         html: () => warpjsUtils.sendPortalIndex(
@@ -42,12 +43,8 @@ module.exports = async (req, res) => {
 
                     resource.embed('users', userResource);
 
-                    userResource.embed('fields', warpjsUtils.createResource('', {
-                        field: constants.fields.Name,
-                        value: instance.Name
-                    }));
-
-
+                    userResource.embed('fields', basicProperty(entity, instance, constants.fields.Name));
+                    userResource.embed('fields', basicProperty(entity, instance, constants.fields.Email));
                 } finally {
                     persistence.close();
                 }

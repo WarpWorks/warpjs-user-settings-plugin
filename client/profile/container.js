@@ -1,6 +1,7 @@
 import Component from './component';
 import constants from './../../lib/constants';
-import wrapContainer from './../react-utils/wrap-container';
+import * as utils from './../utils';
+import { wrapContainer } from './../react-utils';
 
 // import debug from './../debug';
 // const log = debug('client/profile/container');
@@ -8,7 +9,7 @@ import wrapContainer from './../react-utils/wrap-container';
 const mapStateToProps = (state) => Object.freeze({
     loggedIn: state.loggedIn,
 
-    name: Object.freeze(state.user.fields.find((field) => field.field === constants.fields.Name))
+    name: utils.getField(state, constants.fields.Name)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => Object.freeze({});

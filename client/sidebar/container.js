@@ -2,7 +2,7 @@ import pick from 'lodash/pick';
 
 import * as actionCreators from './action-creators';
 import Component from './component';
-import wrapContainer from './../react-utils/wrap-container';
+import { wrapContainer } from './../react-utils';
 
 // import debug from './../debug';
 // const log = debug('client/sidebar/container');

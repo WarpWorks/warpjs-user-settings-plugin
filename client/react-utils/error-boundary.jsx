@@ -1,6 +1,9 @@
-import debug from 'debug';
+import baseComponentName from './base-component-name';
 
+import debug from 'debug';
 const log = debug('W2:plugin:user-settings:client/react-utils/error-boundary');
+
+export const SUFFIX = 'ErrorBoundary';
 
 export default (Component) => {
     class ErrorBoundary extends React.Component {
@@ -19,7 +22,7 @@ export default (Component) => {
             // You can also log the error to an error reporting service
             log("Got error:", error, info);
             // eslint-disable-next-line no-console
-            console.error(`${Component.displayName}.componentDidCatch(): info=`, (info && info.componentStack) ? info.componentStack : info);
+            console.error(`${ErrorBoundary.displayName}.componentDidCatch(): info=`, (info && info.componentStack) ? info.componentStack : info);
         }
 
         render() {
@@ -31,7 +34,7 @@ export default (Component) => {
         }
     };
 
-    ErrorBoundary.displayName = `${Component.displayName}ErrorBoundary`;
+    ErrorBoundary.displayName = `${baseComponentName(Component.displayName)}${SUFFIX}`;
     ErrorBoundary.propTypes = Component.propTypes;
 
     return ErrorBoundary;

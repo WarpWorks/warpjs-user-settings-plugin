@@ -2,19 +2,26 @@ import PropTypes from 'prop-types';
 import { ControlLabel, FormControl, FormGroup, Glyphicon } from 'react-bootstrap';
 
 import errorBoundary from './../react-utils/error-boundary';
+import * as shapes from './../shapes';
 
 const Component = (props) => {
+    const DEFAULT_FEEDBACK = <Glyphicon glyph="pencil" />;
+
     const feedback = () => {
-        if (props.field.error) {
-            return <Glyphicon glyph="floppy-remove" />;
-        } else if (props.field.saved) {
-            return <Glyphicon glyph="floppy-saved" />;
-        } else if (props.field.saving) {
-            return <Glyphicon glyph="floppy-disk" />;
-        } else if (props.field.dirty) {
-            return <Glyphicon glyph="pencil" />;
+        if (props.field) {
+            if (props.field.error) {
+                return <Glyphicon glyph="floppy-remove" />;
+            } else if (props.field.saved) {
+                return <Glyphicon glyph="floppy-saved" />;
+            } else if (props.field.saving) {
+                return <Glyphicon glyph="floppy-disk" />;
+            } else if (props.field.dirty) {
+                return DEFAULT_FEEDBACK;
+            } else {
+                return DEFAULT_FEEDBACK;
+            }
         } else {
-            return <Glyphicon glyph="pencil" />;
+            return DEFAULT_FEEDBACK;
         }
     };
 
@@ -24,7 +31,7 @@ const Component = (props) => {
         >
             <ControlLabel>{props.label}</ControlLabel>
             <FormControl type="text"
-                value={props.field.value}
+                value={props.field ? props.field.value : ''}
                 placeholder={props.placeholder}
                 onChange={props.changed}
                 onBlur={props.save}
@@ -40,14 +47,7 @@ const Component = (props) => {
 Component.displayName = 'AutoSaveField';
 
 Component.propTypes = {
-    field: PropTypes.shape({
-        field: PropTypes.string.isRequired,
-        value: PropTypes.string,
-        dirty: PropTypes.bool,
-        saving: PropTypes.bool,
-        saved: PropTypes.bool,
-        error: PropTypes.string
-    }),
+    field: shapes.field,
     label: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     changed: PropTypes.func.isRequired,

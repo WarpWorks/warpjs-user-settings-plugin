@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Col, Glyphicon, Grid, Row } from 'react-bootstrap';
+import { Alert, Col, Glyphicon, Grid, Row } from 'react-bootstrap';
 
 import Account from './../account';
 import constants from './../constants';
@@ -26,11 +26,13 @@ const MainBody = (props) => {
 
                 default:
                     return (
-                        <h1>
-                            <Glyphicon glyph="exclamation-sign" />
-                            &nbsp;
-                            Invalid section <code>{props.selectedSection}</code>.
-                        </h1>
+                        <Alert bsStyle="danger">
+                            <h1>
+                                <Glyphicon glyph="exclamation-sign" />
+                                &nbsp;
+                                Invalid section <code>{props.selectedSection}</code>.
+                            </h1>
+                        </Alert>
                     );
             }
         } else if (props.loggedIn) {
@@ -54,7 +56,7 @@ const MainBody = (props) => {
 MainBody.propTypes = {
     initialized: PropTypes.bool.isRequired,
     loggedIn: PropTypes.bool.isRequired,
-    selectedSection: PropTypes.string.isRequired
+    selectedSection: PropTypes.string
 };
 
 MainBody.displayName = 'MainBody';

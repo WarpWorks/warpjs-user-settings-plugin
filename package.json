@@ -28,11 +28,20 @@
     "url": "https://github.com/WarpWorks/warpjs-user-settings-plugin/issues"
   },
   "homepage": "https://github.com/WarpWorks/warpjs-user-settings-plugin#readme",
+  "dependencies": {
+    "@warp-works/warpjs-action-plugin": "~1.2.0",
+    "debug": "~4.1.0",
+    "lodash": "~4.17.11"
+  },
+  "peerDependencies": {
+    "@quoin/expressjs-routes-info": ">=0.2.0",
+    "@warp-works/warpjs-utils": ">=1.2.62"
+  },
   "devDependencies": {
     "@quoin/eslint-config-quoin": "~0.3.0",
     "@quoin/expressjs-routes-info": "~0.2.0",
     "@warp-works/warpjs-plugins": "~1.2.6",
-    "@warp-works/warpjs-utils": "~1.2.56",
+    "@warp-works/warpjs-utils": "~1.2.62",
     "babel-core": "~6.26.3",
     "babel-loader": "~7.1.5",
     "babel-plugin-transform-async-to-generator": "~6.24.1",
@@ -73,10 +82,5 @@
     "time-grunt": "~1.4.0",
     "webpack": "~3.12.0",
     "webpack-visualizer-plugin": "~0.1.11"
-  },
-  "dependencies": {
-    "@warp-works/warpjs-action-plugin": "~1.2.0",
-    "debug": "~4.1.0",
-    "lodash": "~4.17.11"
   }
 }
