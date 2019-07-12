@@ -26,9 +26,9 @@ const setUser = (state = {}, action) => extend(cloneDeep(state), {
 setUser.displayName = 'setUser';
 
 export default reduxConcatenateReducers([
-    reactUtils.guardAction([actions.LOGGED_STATE], updateLoggedState),
-    reactUtils.guardAction([actions.SET_USER], setUser),
-    reactUtils.guardAction([actions.SET_USER], updateInitilized),
+    reactUtils.guardAction([ actions.LOGGED_STATE ], updateLoggedState),
+    reactUtils.guardAction([ actions.SET_USER ], setUser),
+    reactUtils.guardAction([ actions.SET_USER ], updateInitilized),
     autoSaveFieldReducers,
     sidebarReducers
 ]);

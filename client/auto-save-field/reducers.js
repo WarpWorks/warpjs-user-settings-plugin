@@ -54,8 +54,8 @@ const resetField = (state = {}, action) => {
 resetField.displayName = 'resetField';
 
 export default reduxConcatenateReducers([
-    reactUtils.guardAction([actions.UPDATE_FIELD], updateField),
-    reactUtils.guardAction([actions.SAVING_FIELD, actions.SAVED_FIELD], savingField),
-    reactUtils.guardAction([actions.SAVED_FIELD], savedField),
-    reactUtils.guardAction([actions.RESET_FIELD], resetField)
+    reactUtils.guardAction([ actions.UPDATE_FIELD ], updateField),
+    reactUtils.guardAction([ actions.SAVING_FIELD, actions.SAVED_FIELD ], savingField),
+    reactUtils.guardAction([ actions.SAVED_FIELD ], savedField),
+    reactUtils.guardAction([ actions.RESET_FIELD ], resetField)
 ]);

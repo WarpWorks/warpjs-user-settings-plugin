@@ -7,7 +7,7 @@ import { wrapContainer } from './../react-utils';
 // import debug from './../debug';
 // const log = debug('client/sidebar/container');
 
-const mapStateToProps = (state, ownProps) => Object.freeze(pick(state, ['selectedSection']));
+const mapStateToProps = (state, ownProps) => Object.freeze(pick(state, [ 'selectedSection' ]));
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     selectSection: (selectedSection) => (key) => {

@@ -14,5 +14,5 @@ const selectSection = (state = {}, action) => extend(cloneDeep(state), {
 selectSection.displayName = 'selectSection';
 
 export default reduxConcatenateReducers([
-    reactUtils.guardAction([actions.SELECT_SECTION], selectSection)
+    reactUtils.guardAction([ actions.SELECT_SECTION ], selectSection)
 ]);

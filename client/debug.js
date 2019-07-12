@@ -1,3 +1,3 @@
-import debug from 'debug';
+import debug from './../debug';
 
-export default (key) => debug(`W2:plugin:user-settings:${key}`);
+export default (key) => debug(`client/${key}`);

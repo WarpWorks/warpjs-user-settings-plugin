@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { Button, Col, ControlLabel, FormControl, FormGroup, Grid, Row } from 'react-bootstrap';
+
 import errorBoundary from './../react-utils/error-boundary';
 
 const Component = (props) => {
@@ -45,6 +48,14 @@ const Component = (props) => {
             </Row>
         </Grid>
     );
+};
+
+Component.displayName = 'ChangePassword';
+
+Component.propTypes = {
+    confirmNewPasswordChanged: PropTypes.func.isRequired,
+    newPasswordChanged: PropTypes.func.isRequired,
+    oldPasswordChanged: PropTypes.func.isRequired
 };
 
 export default errorBoundary(Component);

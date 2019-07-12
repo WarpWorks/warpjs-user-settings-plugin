@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import { Button, Col, ControlLabel, FormControl, FormGroup, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 
 import AutoSaveField from './../auto-save-field';
+import ChangePassword from './../change-password';
 import errorBoundary from './../react-utils/error-boundary';
 import * as shapes from './../shapes';
 
@@ -38,6 +39,7 @@ const Component = (props) => {
 Component.displayName = 'Account';
 
 Component.propTypes = {
+    changePasswordUrl: PropTypes.string,
     email: shapes.field,
     oldPasswordChanged: PropTypes.func,
     newPasswordChanged: PropTypes.func,

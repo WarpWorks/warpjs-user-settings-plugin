@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
 
                 try {
                     const domain = await warpCore.getDomainByName(config.domainName);
-                    const entity = domain.getEntityByInstance({type: req.warpjsUser.type});
+                    const entity = domain.getEntityByInstance({ type: req.warpjsUser.type });
                     const instance = await entity.getInstance(persistence, req.warpjsUser.id);
                     // debug("instance=", instance);
 

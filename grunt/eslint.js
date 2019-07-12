@@ -1,9 +1,9 @@
 module.exports = (grunt, options) => Object.freeze({
-    options: {
+    "options": {
         fix: true,
         useEslintrc: false
     },
-    node: {
+    "node": {
         options: {
             baseConfig: {
                 root: true,
@@ -22,14 +22,23 @@ module.exports = (grunt, options) => Object.freeze({
             '!server/**/*.test.js'
         ]
     },
-    client: {
+    "client": {
         options: {
             baseConfig: {
                 root: true,
                 extends: [
                     '@quoin/eslint-config-quoin/client',
+                    'eslint:recommended',
                     'plugin:react/recommended'
-                ]
+                ],
+                plugins: [
+                    'react'
+                ],
+                settings: {
+                    react: {
+                        version: 'detect'
+                    }
+                }
             },
             globals: [
                 'process',
